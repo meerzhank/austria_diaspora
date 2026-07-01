@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyrgyz Diaspora in Austria</title>
+<meta name="description" content="Community organisation supporting Kyrgyz nationals and Kyrgyz culture in Austria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182848;
+    --ink-soft:#2b3c68;
+    --cream:#F5EFE1;
+    --cream-deep:#ECE2C9;
+    --red:#B9432A;
+    --gold:#C79A3C;
+    --sage:#63795F;
+    --charcoal:#241F1B;
+    --line: rgba(199,154,60,0.35);
+    --max: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Manrope', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    gap:0.6em;
+    margin-bottom:0.9em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--red);
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,239,225,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{display:flex; align-items:center; gap:12px; font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; color:var(--ink);}
+  .brand svg{width:34px; height:34px; flex-shrink:0;}
+  .navlinks{display:flex; gap:36px; font-size:0.92rem; font-weight:600;}
+  .navlinks a{position:relative; padding:6px 0; color:var(--ink-soft);}
+  .navlinks a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--red); transition:width .25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .navcta{
+    background:var(--red); color:var(--cream); padding:10px 20px;
+    border-radius:2px; font-weight:700; font-size:0.85rem;
+    letter-spacing:0.02em;
+  }
+  .menu-btn{display:none; background:none; border:none; cursor:pointer;}
+  .menu-btn span{display:block; width:24px; height:2px; background:var(--ink); margin:5px 0;}
+  @media (max-width:860px){
+    .navlinks, .navcta{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+    padding:120px 0 100px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:center;
+    gap:40px;
+    position:relative;
+    z-index:2;
+  }
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;} }
+  .hero .eyebrow{color:var(--gold);}
+  .hero .eyebrow::before{background:var(--gold);}
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.4rem, 5vw, 3.8rem);
+    line-height:1.05;
+    max-width:11ch;
+  }
+  .hero p{
+    margin-top:22px;
+    max-width:46ch;
+    color:rgba(245,239,225,0.78);
+    font-size:1.05rem;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--red); color:var(--cream); padding:14px 26px;
+    font-weight:700; font-size:0.92rem; border-radius:2px;
+    display:inline-block;
+  }
+  .btn-ghost{
+    border:1px solid rgba(245,239,225,0.35); color:var(--cream);
+    padding:14px 26px; font-weight:700; font-size:0.92rem; border-radius:2px;
+    display:inline-block;
+  }
+  .tunduk-wrap{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .tunduk-wrap svg{width:100%; max-width:380px; height:auto;}
+  .tunduk-ring{ animation: spin 90s linear infinite; transform-origin:center; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce){ .tunduk-ring{ animation:none; } }
+
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 85% 30%, rgba(199,154,60,0.16), transparent 45%),
+      radial-gradient(circle at 15% 80%, rgba(185,67,42,0.14), transparent 40%);
+    pointer-events:none;
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);}
+  .divider{
+    border:none;
+    height:1px;
+    background-image:repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 14px);
+    opacity:0.55;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--cream-deep);}
+  .service-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:900px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .service-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--cream-deep);
+    padding:34px 28px;
+  }
+  .service-card .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem; color:var(--red); letter-spacing:0.08em;
+  }
+  .service-card h3{
+    font-size:1.15rem; margin:14px 0 10px;
+  }
+  .service-card p{font-size:0.92rem; color:var(--ink-soft);}
+
+  /* ---------- ABOUT ---------- */
+  .about .wrap{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;
+  }
+  @media (max-width:860px){ .about .wrap{grid-template-columns:1fr;} }
+  .about-visual{
+    aspect-ratio:4/5;
+    border-radius:2px;
+    background:
+      linear-gradient(160deg, var(--ink) 0%, var(--ink-soft) 100%);
+    position:relative;
+    overflow:hidden;
+    display:flex; align-items:flex-end;
+  }
+  .about-visual .pattern{
+    position:absolute; inset:0; opacity:0.5;
+  }
+  .about-visual figcaption{
+    position:relative; z-index:2;
+    padding:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--gold);
+    letter-spacing:0.04em;
+  }
+  .about-body p{margin-bottom:18px; color:var(--ink-soft); max-width:60ch;}
+  .about-body p:first-of-type{font-size:1.15rem; color:var(--charcoal);}
+
+  /* ---------- MISSION ---------- */
+  .mission{background:var(--ink); color:var(--cream);}
+  .mission .eyebrow{color:var(--gold);}
+  .mission .eyebrow::before{background:var(--gold);}
+  .mission h2{color:var(--cream);}
+  .mission-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:20px;
+  }
+  @media (max-width:700px){ .mission-grid{grid-template-columns:1fr;} }
+  .mission-item{
+    border-left:2px solid var(--gold);
+    padding:6px 0 6px 22px;
+  }
+  .mission-item p{color:rgba(245,239,225,0.75); font-size:0.96rem;}
+
+  /* ---------- ACTIVITIES ---------- */
+  .activities-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+  }
+  @media (max-width:860px){ .activities-grid{grid-template-columns:1fr;} }
+  .activity-card h3{font-size:1.2rem; margin-bottom:10px;}
+  .activity-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--sage); display:block; margin-bottom:14px;
+  }
+  .activity-card p{color:var(--ink-soft); font-size:0.94rem;}
+  .activity-swatch{
+    height:8px; width:48px; margin-bottom:18px; border-radius:2px;
+  }
+
+  /* ---------- MEMBERSHIP / CTA ---------- */
+  .join{
+    background:var(--red);
+    color:var(--cream);
+    text-align:center;
+  }
+  .join h2{color:var(--cream); font-size:clamp(1.8rem,3.5vw,2.6rem); max-width:20ch; margin:0 auto 18px;}
+  .join p{max-width:52ch; margin:0 auto 34px; color:rgba(245,239,225,0.85);}
+  .join .btn-primary{background:var(--ink); color:var(--cream);}
+
+  /* ---------- CONTACT ---------- */
+  .contact .wrap{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px;
+  }
+  @media (max-width:860px){ .contact .wrap{grid-template-columns:1fr;} }
+  .contact-info dl{display:grid; gap:22px; margin-top:28px;}
+  .contact-info dt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--red); margin-bottom:4px;
+  }
+  .contact-info dd{font-size:1.02rem; color:var(--charcoal);}
+  .socials{display:flex; gap:14px; margin-top:30px;}
+  .socials a{
+    width:38px; height:38px; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; font-size:0.8rem; color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .socials a:hover{background:var(--ink); color:var(--cream); border-color:var(--ink);}
+
+  form{display:grid; gap:16px;}
+  .field{display:grid; gap:6px;}
+  .field label{font-size:0.82rem; font-weight:600; color:var(--ink-soft);}
+  .field input, .field textarea{
+    border:1px solid var(--line);
+    background:transparent;
+    padding:12px 14px;
+    font-family:'Manrope', sans-serif;
+    font-size:0.95rem;
+    border-radius:2px;
+    color:var(--charcoal);
+  }
+  .field input:focus, .field textarea:focus{
+    outline:2px solid var(--red); outline-offset:1px;
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  button.submit{
+    justify-self:start;
+    background:var(--ink); color:var(--cream);
+    padding:13px 28px; font-weight:700; font-size:0.9rem;
+    border:none; border-radius:2px; cursor:pointer;
+  }
+  button.submit:hover{background:var(--ink-soft);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+
+  ::selection{background:var(--gold); color:var(--ink);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--red); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" stroke="#B9432A" stroke-width="2"/>
+        <path d="M30 6 L30 54 M6 30 L54 30 M12.5 12.5 L47.5 47.5 M47.5 12.5 L12.5 47.5" stroke="#C79A3C" stroke-width="1.4"/>
+        <circle cx="30" cy="30" r="9" stroke="#182848" stroke-width="1.6" fill="#F5EFE1"/>
+      </svg>
+      Kyrgyz Diaspora&nbsp;— Austria
+    </a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="navcta" href="#join">Become a member</a>
+    <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Bishkek → Vienna</p>
+      <h1>A home for the Kyrgyz community in Austria</h1>
+      <p>We connect Kyrgyz nationals and their families across Austria — support with integration, a bridge to home, and a place to gather, celebrate, and grow together.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#join">Become a member</a>
+        <a class="btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="tunduk-wrap">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g class="tunduk-ring">
+          <circle cx="200" cy="200" r="170" stroke="#C79A3C" stroke-width="1"/>
+          <circle cx="200" cy="200" r="130" stroke="#C79A3C" stroke-width="1" opacity="0.6"/>
+          <g stroke="#F5EFE1" stroke-width="1.2" opacity="0.75">
+            <path d="M200 30 L200 370"/>
+            <path d="M30 200 L370 200"/>
+            <path d="M83 83 L317 317"/>
+            <path d="M317 83 L83 317"/>
+            <path d="M140 45 L260 355"/>
+            <path d="M260 45 L140 355"/>
+            <path d="M45 140 L355 260"/>
+            <path d="M45 260 L355 140"/>
+          </g>
+        </g>
+        <circle cx="200" cy="200" r="46" fill="#B9432A"/>
+        <circle cx="200" cy="200" r="46" stroke="#F5EFE1" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="wrap">
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="num">01</span>
+        <h3>Legal &amp; Immigration</h3>
+        <p>Guidance navigating Austrian residence permits, family reunification, and visa processes.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">02</span>
+        <h3>Language Classes</h3>
+        <p>German classes for newcomers, and Kyrgyz classes for children growing up in Austria.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">03</span>
+        <h3>Employment Support</h3>
+        <p>CV workshops, job search help, and recognition of foreign qualifications.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">04</span>
+        <h3>Community Care</h3>
+        <p>Support finding healthcare, schooling, and housing — and simply, people to ask.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <figure class="about-visual">
+      <svg class="pattern" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="felt" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+            <path d="M0 30 Q15 0 30 30 T60 30" stroke="#C79A3C" stroke-width="1" fill="none" opacity="0.35"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="500" fill="url(#felt)"/>
+      </svg>
+      <figcaption>Est. Vienna, community-run since day one</figcaption>
+    </figure>
+    <div class="about-body">
+      <p class="eyebrow">About us</p>
+      <h2>Wherever the mountains meet the Alps</h2>
+      <p>The Kyrgyz Diaspora in Austria is a community organisation supporting Kyrgyz nationals and people of Kyrgyz descent living across the country.</p>
+      <p>We started as a handful of families meeting for Nooruz in Vienna, and have grown into a network offering practical support, cultural continuity, and friendship between the Kyrgyz and Austrian communities.</p>
+      <p>Whether you've just arrived or have called Austria home for twenty years, this is a place to find your footing — and to keep a piece of Kyrgyzstan close.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="wrap">
+    <p class="eyebrow">Mission</p>
+    <h2>Building bridges, not just bonds</h2>
+    <div class="mission-grid">
+      <div class="mission-item"><p>Promote Kyrgyz culture and traditions throughout Austria.</p></div>
+      <div class="mission-item"><p>Support the integration of Kyrgyz families into Austrian society.</p></div>
+      <div class="mission-item"><p>Provide practical resources for Kyrgyz nationals settling in Austria.</p></div>
+      <div class="mission-item"><p>Foster warm, lasting relations between Kyrgyz and Austrian communities.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="activities" id="activities">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Cultural life</p>
+      <h2>Events that keep our heritage alive</h2>
+    </div>
+    <div class="activities-grid">
+      <div class="activity-card">
+        <div class="activity-swatch" style="background:var(--red);"></div>
+        <span class="tag">Festival</span>
+        <h3>Nooruz Celebration</h3>
+        <p>Our largest gathering of the year — marking the spring equinox with food, music, and the community together in one hall.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-swatch" style="background:var(--gold);"></div>
+        <span class="tag">Workshop</span>
+        <h3>Felt &amp; Craft Circle</h3>
+        <p>Hands-on sessions in shyrdak felt-making and traditional embroidery, open to all ages and skill levels.</p>
+      </div>
+      <div class="activity-card">
+        <div class="activity-swatch" style="background:var(--sage);"></div>
+        <span class="tag">Culinary</span>
+        <h3>Kitchen Gatherings</h3>
+        <p>Cooking evenings around beshbarmak and plov, and the occasional food stall at Vienna's multicultural fairs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <p class="eyebrow" style="justify-content:center; color:var(--gold);">Get involved</p>
+    <h2>Membership is open to anyone who feels at home here</h2>
+    <p>Kyrgyz nationals, people of Kyrgyz descent, and anyone with a love for Kyrgyz culture are all welcome. Members get event invitations, our newsletter, and a network of people who've walked the same path.</p>
+    <a class="btn-primary" href="#contact">Join the community</a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info">
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+      <p style="color:var(--ink-soft); margin-top:14px; max-width:44ch;">Questions, ideas, or just want to say hello — we'd love to hear from you.</p>
+      <dl>
+        <div>
+          <dt>Location</dt>
+          <dd>Vienna, Austria <span style="color:var(--ink-soft); font-size:0.85rem;">(replace with your street address)</span></dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd>+43 xxx xxx xxxx</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>hello@kyrgyzdiaspora.at</dd>
+        </div>
+      </dl>
+      <div class="socials" aria-label="Social media links">
+        <a href="#" title="Facebook">FB</a>
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="TikTok">TT</a>
+        <a href="#" title="Telegram">TG</a>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); this.reset(); alert('Thanks — we will be in touch soon. (Connect this form to an email service to go live.)');">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" required></textarea>
+      </div>
+      <button class="submit" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kyrgyz Diaspora in Austria. All rights reserved.</span>
+    <span>Built with care, in Vienna.</span>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const navlinks = document.querySelector('.navlinks');
+  menuBtn?.addEventListener('click', () => {
+    navlinks.style.display = navlinks.style.display === 'flex' ? 'none' : 'flex';
+    navlinks.style.cssText += 'position:absolute; top:76px; left:0; right:0; background:#F5EFE1; flex-direction:column; padding:24px 32px; border-bottom:1px solid rgba(199,154,60,0.35);';
+  });
+</script>
+
+</body>
+</html>
